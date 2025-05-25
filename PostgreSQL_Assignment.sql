@@ -67,3 +67,7 @@ SELECT r.name, COUNT(s.sighting_id) AS total_sightings
 FROM rangers r
 LEFT JOIN sightings s ON r.ranger_id = s.ranger_id
 GROUP BY r.name;
+
+-- problem 5
+SELECT common_name FROM species
+WHERE species_id NOT IN (SELECT DISTINCT species_id FROM sightings);
