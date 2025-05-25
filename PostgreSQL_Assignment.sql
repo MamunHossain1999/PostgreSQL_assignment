@@ -1,0 +1,49 @@
+CREATE TABLE rangers (
+    ranger_id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    region VARCHAR(100) NOT NULL
+);
+
+INSERT INTO rangers (name, region) VALUES
+('Mera', 'North Zone'),
+('Ravi', 'South Zone'),
+('Sita', 'West Zone'),
+('Anil', 'Central Zone'),
+('Priya', 'North Zone'),
+('Raj', 'South Zone'),
+('Kiran', 'West Zone'),
+('Vikram', 'Central Zone'),
+('Anita', 'East Zone');
+
+SELECT * from rangers;
+
+CREATE TABLE species (
+    species_id SERIAL PRIMARY KEY,
+    common_name VARCHAR(100) NOT NULL,
+    scientific_name VARCHAR(150),
+    discovery_date DATE,
+    conservation_status VARCHAR(50)
+);
+
+
+INSERT INTO species (common_name, scientific_name, discovery_date, conservation_status) VALUES
+('Shadow Leopard', 'Panthera uncia', '1758-01-01', 'Endangered'),
+('Golden Langur', 'Trachypithecus geei', '1953-01-01', 'Vulnerable'),
+('Indian Pangolin', 'Manis crassicaudata', '1822-01-01', 'Endangered'),
+('Red Panda', 'Ailurus fulgens', '1825-01-01', 'Endangered');
+
+SELECT * FROM species;
+
+
+
+CREATE TABLE sightings (
+    sighting_id SERIAL PRIMARY KEY,
+    ranger_id INT REFERENCES rangers(ranger_id),
+    species_id INT REFERENCES species(species_id),
+    sighting_time TIMESTAMP,
+    location VARCHAR(100),
+    notes TEXT
+);
+
+
+SELECT * FROM sightings;
