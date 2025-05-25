@@ -58,3 +58,6 @@ SELECT * FROM sightings;
 
 -- problem 2
 SELECT COUNT(DISTINCT species_id) AS unique_species_count FROM sightings;
+
+-- problem 3
+SELECT * FROM sightings WHERE location ILIKE '%Pass%';
